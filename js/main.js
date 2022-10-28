@@ -11,22 +11,23 @@ $(document).ready(()=>{
 let currentFlag="#meals";
 
 function startLoading(){
-    $("#loading").fadeIn(500,()=>{
+    $("#loading").fadeIn(100,()=>{
         $(window).scrollTop("0px")
     })
     $("body").css("overflow","hidden");
     
     if(currentFlag != "#searchMeals"){
-    $("section").not("#bar").css("display","none");
+    $("section").not("#bar").not("#loading").css("display","none");
     }
 }
 function finishtLoading(nowWindow="#meals"){
-    $("section").not(nowWindow).not("#bar").css("display","none");
+    $("#loading").fadeOut(500);
+    $("section").not(nowWindow).not("#bar").not("#loading").css("display","none");
         $(nowWindow).css("display","block");
         $("#bar").css("display","block");
         $("body").css("overflow","auto");
         $("#bar").css("z-index","200")
-    $("#loading").fadeOut(500);
+
 }
 
 getMealsByName("");
