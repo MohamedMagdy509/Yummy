@@ -1,11 +1,12 @@
 /******************************************************** Loading and Begining ********************************************************/
 $(document).ready(()=>{
-    $("#loading").fadeOut(500, function(){
+    $("#loading").delay(500).fadeOut(500, function(){
         $("#meals").css("display","block");
         currentFlag="#meals";
         $("#bar").css("display","block");
-        $("section").not("#meals").not("#bar").css("display","none");
+        $("section").not("#meals").not("#bar").not("#loading").css("display","none");
         $("body").css("overflow","auto");
+        $("#bar").css("z-index","200")
     });
 })
 let currentFlag="#meals";
@@ -21,12 +22,12 @@ function startLoading(){
     }
 }
 function finishtLoading(nowWindow="#meals"){
-    $("#loading").fadeOut(500);
     $("section").not(nowWindow).not("#bar").not("#loading").css("display","none");
-        $(nowWindow).css("display","block");
+    $(nowWindow).css("display","block");
+    $("#loading").fadeOut(500);
         $("#bar").css("display","block");
         $("body").css("overflow","auto");
-        $("#bar").css("z-index","200")
+
 
 }
 
